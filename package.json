@@ -2,6 +2,10 @@
   "name": "flipper",
   "version": "0.1.0",
   "private": true,
+  "description": "Flip through those ARW files like a 🚀",
+  "main": "public/electron.js",
+  "author": "fstylermiller <fstylermiller@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -14,8 +18,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "concurrently -k \"yarn start\" \"yarn electron\"",
+    "electron": "wait-on tcp:3000 && electron .",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +39,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@electron/remote": "^2.0.8",
+    "concurrently": "^7.1.0",
+    "electron": "^18.0.4",
+    "electron-is-dev": "^2.0.0",
+    "wait-on": "^6.0.1"
   }
 }
